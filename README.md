@@ -1,0 +1,1 @@
+# HP-EliteBook-2570p-OpenCore-EFI
