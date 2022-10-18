@@ -7,15 +7,19 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 
 <ins>Even then, use this EFI at your own risk only if you know what you're doing and can edit the config.plist according to your own hardware and needs.</ins>
 
-## **Considerations**
-- You'll need any macOS Monterey version ready to be installed, either with a full installer or through recovery. ***<ins>THIS EFI WAS NOT MADE TO WORK WITH ANY OTHER macOS AND AS SUCH HAS NOT BEEN TESTED, HENCE I WILL NOT SUPPORT ANYONE WANTING TO USE A DIFFERENT macOS UNTIL I HAVE BEEN ABLE TO TEST AND MAKE MULTIPLE DIFFERENT EFIs FOR DIFFERENT VERSIONS.</ins>*** If you want to install a different version, see: **"What if I need > macOS Monterey?"**
-- While officially you only need 4GB of RAM, I personally recommend no less than 8GB running in dual channel (E.G. Two sticks of RAM in each slot, for example 2 sticks of 4GB RAM and not just one 8GB stick.) and using a SATA SSD at the very least to get reasonable performance. However, this is optional and completely up to you.
-- You ***NEED*** to exact same model or, at the very least, have a same generation CPU and iGPU to use this config.plist as is.
-- You absolutely ***NEED*** to have emulated NVRAM enabled by setting `LoadEarly` to `True` for both OpenRuntime.efi and OpenVariableRuntimeDxe.efi in the config.plist. (***You cannot boot if this is configured incorrectly. Be careful when snapshotting with ProperTree as it resets the*** `LoadEarly` ***value to false. This has the potential to break booting completely and will warrant a full reinstall.***) If you have questions, see: **"What if I don't know how to enable emulated NVRAM?"**
-- You ***NEED*** to generate your own SMBIOS info using [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) with `MacBookPro10,1` and place it in your config.plist before being able to use this EFI. If you don't know how to do this, see: **"What if I don't know how to use GenSMBIOS?"**
-- ***You cannot enable SIP, Secure Boot or remove the*** `-no_compat_check` ***boot arg or YOU WILL break booting.*** For more information, see: **"What if I want to enable SIP?"**, **"What if I want to enable Secure Boot?"**, and **"What if I want to remove the boot arg?"**
+## Considerations
+   ### macOS
+   - You can install any macOS Monterey version, either with a full installer or through recovery. <ins>This EFI folder has not been tested with any other macOS, and therefore does not have support for anything other than macOS Monterey.</ins> If you want to install a different version, see: **"What if I need > macOS Monterey?"**
+   ### Hardware
+   - While officially you only need 4GB of RAM, I personally recommend no less than 8GB running in [dual channel](https://www.crucial.com/articles/about-memory/what-is-dual-channel-memory) and using a SATA SSD at the very least to get reasonable performance. However, this is optional and completely up to you.
+   - You ***NEED*** to exact same model or, at the very least, have a [same generation](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) CPU and iGPU to use this config.plist as is.
+   ### config.plist
+   - You need to have emulated NVRAM enabled by setting `LoadEarly` to `True` for both OpenRuntime.efi and OpenVariableRuntimeDxe.efi. ***You cannot boot if this is configured incorrectly. Be careful when snapshotting with [ProperTree](https://github.com/corpnewt/ProperTree) as it resets the*** `LoadEarly` ***value to false. This has the potential to break booting completely and will warrant a full reinstall.*** If you have questions, see: **"What if I don't know how to enable emulated NVRAM?"**
+   - Before using this EFI make sure to generate your own SMBIOS information with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) using `MacBookPro10,1` and place it in `PlatformInfo` before being able to use this EFI. If you don't know how to do this, see: **"What if I don't know how to use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)?"**
+   - ***You cannot enable SIP, Secure Boot or remove the*** `-no_compat_check` ***boot arg or you will break booting.*** For more information, see: **"What if I want to enable SIP?"**, **"What if I want to enable Secure Boot?"**, and **"What if I want to remove the boot arg?"**
 
-## BIOS Changes
+## BIOS
+   ### Settings
    Set `Boot Options` > `Startup Menu Delay (Sec.)` to `05`. (This will give you a chance to enter the BIOS just in case you need to change anything, as I have found that it sometimes boots very quickly when using a SATA SSD.)
    
    Set `Boot Options` > `User Mode` to `HP Factory Keys`. (If you already had this set to `Customer Keys`, you can leave this setting as is.)
@@ -34,8 +38,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
    
    Set `Built-In Device Options` > `Wake on LAN` to `Disable`. (In my research, setting this to `Boot to Network` or `Follow Boot Order` also breaks sleep in macOS.)
    
-   ### You will also need to
-   
+   ### Enable & Disable
    | Enable | Disable |
    | ------ | ------- |
    | `Boot Options` > `Audio alerts during boot` | `Boot Options` > `Display Diagnostic URL` |
@@ -67,14 +70,10 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
    | `Port Options` > `USB Port` |
    | `Port Options` > `Express Card Slot` |
    | `Port Options` > `eSATA Port`|
-   
-   But now, with that out of the way:
 
 ## **Hardware**
-
-If you have **ANY** different hardware than what's listed in the hardware table below, make sure to change Kexts, SSDTs, Drivers, DeviceProperties and config.plist patches accordingly, see: **"What if I'm not familiar with the files in the EFI?"**
-
-If you don't know what hardware you have, you probably shouldn't even be here, but see: **"What if I don't know what hardware I have?"**
+   - If you have **ANY** different hardware than what's listed in the hardware table below, make sure to change Kexts, SSDTs, Drivers, DeviceProperties and config.plist patches accordingly, see: **"What if I'm not familiar with the files in the EFI?"**
+   - If you don't know what hardware you have, you probably shouldn't even be here, but see: **"What if I don't know what hardware I have?"**
 
 | Hardware | Model |
 | --- | -------------------|
@@ -92,7 +91,6 @@ If you don't know what hardware you have, you probably shouldn't even be here, b
 | BIOS Version | F.73 Revision A |
 
 ## What's Working
-
 | Fully Working | Not Tested |
 | ------------- | ---------- |
 | iGPU Acceleration (Patched) | SIM Card Slot |
@@ -109,6 +107,7 @@ If you don't know what hardware you have, you probably shouldn't even be here, b
 | Audio out (Speakers & 3.5mm Headphone/Microphone Combo Jack) |
 | Audio in (Integrated Mic) |
 | USB Ports |
+| SD Card Reader |
 | CD-ROM |
 | WiFi, both 2.4GHz and 5GHz |
 | Ethernet |
@@ -140,18 +139,18 @@ If you don't know what hardware you have, you probably shouldn't even be here, b
 - No Airdrop, Handoff, Sidecar, etc. because of no Bluetooth.
 - Track Point isn't working. This seems to be caused by VoodooPS2Controller. In my testing, Keyboard and Trackpad work decently when using RehabMan's 2018 version of VoodooPS2, but not the Track Point. If I switch over to the newer VoodooPS2Controller which uses VoodooInput, the Track Point works, but nothing else.
 - Modem devices are detected, but have no support in macOS.
-- The SD Card Reader is detected, but not working.
 - The disable trackpad shortcut (Double tapping the top left corner of the touchpad) does nothing, also seems to be related to VoodooPS2Controller.
 - Fingerprint scanner does not work as there is currently no way to emulate Touch ID, see [Hardware Limitations](https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#miscellaneous).
 
-## **Instructions**
-
+## Instructions
 1. Test, test, test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from USB first. If you need guidance on how to test boot from USB, see: **"What if I don't know how to test an EFI folder?"**
 2. Once tested and confirmed working, you will need to download [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) to patch the Intel HD Graphics 4000 iGPU to get graphics acceleration working. If you need guidance on how to do this, see: **"What if I don't know how to use OpenCore Legacy Patcher?"**
 3. Once fully patched, you can swap back from `DEBUG` to `RELEASE`.
 
-## "What if...?"
+## SD Card Reader
+To enable the SD Card Reader, download [JMicron-Card-Reader](https://github.com/chris1111/JMicron-Card-Reader) from [chris1111](https://github.com/chris1111) and install it. Security & Privacy will ask you to allow the new extensions, so allow them and reboot. (**Note:** You might have to reboot a second time.) Once rebooted the SD Card Reader should be fully working.
 
+## "What if...?"
 | "What if...?" | Answer |
 | ------------- | ------ |
 | "What if I need > macOS Monterey?" | You can either use macOS Monterey for now, and wait until I make an EFI for other versions, (Which I do currently plan on doing, but things like this take a long time to complete and troubleshoot, and also take into consideration that I have to document everything.) or make your own EFI from scratch. |
@@ -168,9 +167,7 @@ If you don't know what hardware you have, you probably shouldn't even be here, b
 | "What if I don't know how to use [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases)?" | After installing macOS Monterey, you'll notice that you have no iGPU acceleration and everything chugs along *very* slowly. To fix this, we download [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases), run it, re-launch as root, click on `Post Install Root Patch`, click on `Apply Patches`, and wait for the prompt to reboot. After rebooting, iGPU acceleration should now be fully working. If you update through Software Update this patch will be removed and you will have repeat this process. Note that [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) automatically detects when the patches have been removed and will prompt you to patch again. You will also have to switch back to `UEFI Hybrid (With CSM)` so you can see what's on the screen. |
 
 ## EFI Files Explained
-
 ### ACPI/SSDTs
-
 | Name | Function |
 | ---- | -------- |
 | SSDT-AC | This patch attaches an AC Adapter Device that already exists in the DSDT to the `AppleACPIACAdapter` service in the IORegistry of macOS. This is optional and mostly cosmetic – it doesn't make any difference in terms of functionality, see: [Emulate a layer of AppleACPIACAdapter](https://github.com/acidanthera/bugtracker/issues/1808). |
@@ -183,7 +180,6 @@ If you don't know what hardware you have, you probably shouldn't even be here, b
 | SSDT-XCPM | Apple deactivated the `X86PlatformPlugin` support for Ivy Bridge in macOS a few years back. Instead, the `ACPI_SMC_PlatformPlugin` is used for CPU power management, although XCPM is supported by Ivy Bridge CPUs natively. This patch brings back XCPM power management. |
 
 ### Patches
-
 | Name | Function |
 | ---- | -------- |
 | BoardIDSkip + VMM | Enables booting macOS Monterey with an unsupported Board ID and adds patches that [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) uses to trick macOS into thinking it's running on a virtual machine. |
@@ -199,9 +195,9 @@ If you don't know what hardware you have, you probably shouldn't even be here, b
 |             |              | OpenCanopy.efi             |
 
 ## Thank You!
-
 - [acidanthera](https://github.com/acidanthera) for [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg), [AppleALC](https://github.com/acidanthera/AppleALC), [MaciASL](https://github.com/acidanthera/MaciASL), [VoodooPS2](https://github.com/acidanthera/VoodooPS2), [FeatureUnlock](https://github.com/acidanthera/FeatureUnlock), [WhateverGreen](https://github.com/acidanthera/WhateverGreen), [Lilu](https://github.com/acidanthera/Lilu), [VirtualSMC](https://github.com/acidanthera/VirtualSMC), [IntelMausi](https://github.com/acidanthera/IntelMausi), [gfxutil](https://github.com/acidanthera/gfxutil), and [macserial](https://github.com/acidanthera/macserial).
 - [RehabMan](https://github.com/RehabMan) for the various patches he made.
-- [corpnewt](https://github.com/corpnewt) for [ProperTree](https://github.com/corpnewt/ProperTree), [SSDTTime](https://github.com/corpnewt/SSDTTime), [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), and [BootChime](https://github.com/corpnewt/BootChime).
+- [chris1111](https://github.com/chris1111) for [JMicron-Card-Reader](https://github.com/chris1111/JMicron-Card-Reader).
+- [corpnewt](https://github.com/corpnewt) for [ProperTree](https://github.com/corpnewt/ProperTree), [SSDTTime](https://github.com/corpnewt/SSDTTime), and [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS).
 - [Dortania](https://github.com/dortania) for [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/).
 - [5T33Z0](https://github.com/5T33Z0) for [OC Little Translated](https://5t33z0.gitbook.io/oc-litte-translated/), from which many fixes were created for this laptop.
