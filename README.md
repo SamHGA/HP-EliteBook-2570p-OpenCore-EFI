@@ -78,7 +78,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 
 | Hardware | Model |
 | --- | -------------------|
-| CPU | Intel Core i7-3520 |
+| CPU | Intel Core i7-3520M |
 | Microarchitecture | Ivy Bridge |
 | iGPU | Intel HD Graphics 4000 |
 | Chipset | Intel 7 Series - Mobile Intel QM77 Express with vPro Support |
