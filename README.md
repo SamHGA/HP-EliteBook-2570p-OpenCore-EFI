@@ -17,6 +17,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
    - You need to have emulated NVRAM enabled by setting `LoadEarly` to `True` for both OpenRuntime.efi and OpenVariableRuntimeDxe.efi. ***You cannot boot if this is configured incorrectly. Be careful when snapshotting with [ProperTree](https://github.com/corpnewt/ProperTree) as it resets the*** `LoadEarly` ***value to false. This has the potential to break booting completely and will warrant a full reinstall.*** If you have questions, see: **"What if I don't know how to enable emulated NVRAM?"**
    - Before using this EFI make sure to generate your own SMBIOS information with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) using `MacBookPro10,1` and place it in `PlatformInfo` before being able to use this EFI. If you don't know how to do this, see: **"What if I don't know how to use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)?"**
    - ***You cannot enable SIP, Secure Boot or remove the*** `-no_compat_check` ***boot arg or you will break booting.*** For more information, see: **"What if I want to enable SIP?"**, **"What if I want to enable Secure Boot?"**, and **"What if I want to remove the boot arg?"**
+   - `AppleXcpmCfgLock` has to stay enabled as CFG Lock can't be disabled through normal means. We don't use `AppleCpuPmCfgLock` as we have enabled XCPM.
 
 ## BIOS
    ### Settings
@@ -141,6 +142,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - Modem devices are detected, but have no support in macOS.
 - The disable trackpad shortcut (Double tapping the top left corner of the touchpad) does nothing, also seems to be related to VoodooPS2Controller.
 - Fingerprint scanner does not work as there is currently no way to emulate Touch ID, see [Hardware Limitations](https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#miscellaneous).
+- CFG Lock can't be disabled in the BIOS.
 
 ## Instructions
 1. Test, test, test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from USB first. If you need guidance on how to test boot from USB, see: **"What if I don't know how to test an EFI folder?"**
