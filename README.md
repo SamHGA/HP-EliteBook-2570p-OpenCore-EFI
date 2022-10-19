@@ -87,8 +87,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 | Audio Codec | IDT 92HD81B1X |
 | Webcam | Integrated HP Webcam [Fixed] |
 | SD Card Reader | JMicron SD/MMC Reader |
-| Trackpad/Trackpoint | PS/2 Connected |
-| Keyboard | PS/2 Connected |
+| Trackpad/Trackpoint & Keyboard | PS/2 Connected |
 | BIOS Version | F.73 Revision A |
 
 ## What's Working
