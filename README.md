@@ -197,9 +197,12 @@ To enable the SD Card Reader, download [JMicron-Card-Reader](https://github.com/
 |             |              | OpenCanopy.efi             |
 
 ## Thank You!
-- [acidanthera](https://github.com/acidanthera) for [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg), [AppleALC](https://github.com/acidanthera/AppleALC), [MaciASL](https://github.com/acidanthera/MaciASL), [VoodooPS2](https://github.com/acidanthera/VoodooPS2), [FeatureUnlock](https://github.com/acidanthera/FeatureUnlock), [WhateverGreen](https://github.com/acidanthera/WhateverGreen), [Lilu](https://github.com/acidanthera/Lilu), [VirtualSMC](https://github.com/acidanthera/VirtualSMC), [IntelMausi](https://github.com/acidanthera/IntelMausi), [gfxutil](https://github.com/acidanthera/gfxutil), and [macserial](https://github.com/acidanthera/macserial).
-- [RehabMan](https://github.com/RehabMan) for the various patches he made.
+- [acidanthera](https://github.com/acidanthera) for [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg), [AppleALC](https://github.com/acidanthera/AppleALC), [MaciASL](https://github.com/acidanthera/MaciASL), [VoodooPS2](https://github.com/acidanthera/VoodooPS2), [FeatureUnlock](https://github.com/acidanthera/FeatureUnlock), [WhateverGreen](https://github.com/acidanthera/WhateverGreen), [Lilu](https://github.com/acidanthera/Lilu), [VirtualSMC](https://github.com/acidanthera/VirtualSMC), [IntelMausi](https://github.com/acidanthera/IntelMausi), [gfxutil](https://github.com/acidanthera/gfxutil), [macserial](https://github.com/acidanthera/macserial), [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi), [
+- [RehabMan](https://github.com/RehabMan) for the various patches he made, and [RehabMan's VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/).
 - [chris1111](https://github.com/chris1111) for [JMicron-Card-Reader](https://github.com/chris1111/JMicron-Card-Reader).
 - [corpnewt](https://github.com/corpnewt) for [ProperTree](https://github.com/corpnewt/ProperTree), [SSDTTime](https://github.com/corpnewt/SSDTTime), and [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS).
+- [OpenIntelWireless](https://github.com/OpenIntelWireless) for [itlwm](https://github.com/OpenIntelWireless/itlwm).
+- [USBToolBox](https://github.com/USBToolBox) for [tool](https://github.com/USBToolBox/tool).
+- [1Revenger1](https://github.com/1Revenger1) for [ECEnabler](https://github.com/1Revenger1/ECEnabler).
 - [Dortania](https://github.com/dortania) for [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/).
 - [5T33Z0](https://github.com/5T33Z0) for [OC Little Translated](https://5t33z0.gitbook.io/oc-litte-translated/), from which many fixes were created for this laptop.
