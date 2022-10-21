@@ -103,6 +103,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 | Sleep |
 | Lid Switch |
 | Trackpad |
+| Disable trackpad shortcut |
 | Webcam |
 | Audio out (Speakers & 3.5mm Headphone/Microphone Combo Jack) |
 | Audio in (Integrated Mic) |
@@ -139,7 +140,6 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - No Airdrop, Handoff, Sidecar, etc. because of no Bluetooth.
 - Track Point isn't working. This seems to be caused by VoodooPS2Controller. In my testing, Keyboard and Trackpad work decently when using RehabMan's 2018 version of VoodooPS2, but not the Track Point. If I switch over to the newer VoodooPS2Controller which uses VoodooInput, the Track Point works, but nothing else.
 - Modem devices are detected, but have no support in macOS.
-- The disable trackpad shortcut (Double tapping the top left corner of the touchpad) does nothing, also seems to be related to VoodooPS2Controller.
 - Fingerprint scanner does not work as there is currently no way to emulate Touch ID, see [Hardware Limitations](https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#miscellaneous).
 - CFG Lock can't be disabled in the BIOS.
 
