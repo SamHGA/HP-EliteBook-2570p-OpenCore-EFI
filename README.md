@@ -207,4 +207,4 @@ To enable the SD Card Reader, download [JMicron-Card-Reader](https://github.com/
 - [1Revenger1](https://github.com/1Revenger1) for [ECEnabler](https://github.com/1Revenger1/ECEnabler).
 - [Dortania](https://github.com/dortania) for [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/).
 - [5T33Z0](https://github.com/5T33Z0) for [OC Little Translated](https://5t33z0.gitbook.io/oc-litte-translated/), from which many fixes were created for this laptop.
-- [Maingamer3782](https://www.reddit.com/user/Maingamer3782/) on Reddit for the garbled screen line fixes when not using `UEFI Hybrid (With CSM)`, testing DisplayPort, and testing ethernet for me.
+- [Maingamer3782](https://www.reddit.com/user/Maingamer3782/) for the garbled screen line fixes when not using `UEFI Hybrid (With CSM)`, testing DisplayPort, and testing ethernet for me.
