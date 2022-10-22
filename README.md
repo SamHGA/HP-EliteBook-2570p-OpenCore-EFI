@@ -142,6 +142,9 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - Modem devices are detected, but have no support in macOS.
 - Fingerprint scanner does not work as there is currently no way to emulate Touch ID, see [Hardware Limitations](https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#miscellaneous).
 - CFG Lock can't be disabled in the BIOS.
+- "About This Mac" doesn't show the "Memory" tab. This is normal however, as we have no way to change this, even if we change `SystemMemoryStatus` in the config.plist. See the `PlatformInfo` section of [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf):
+> Note: On certain Mac models, such as the MacBookPro10,x and any MacBookAir, SPMemoryReporter.spreporter
+will ignore PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
 
 ## Instructions
 1. Test, test, test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from USB first. If you need guidance on how to test boot from USB, see: **"What if I don't know how to test an EFI folder?"**
