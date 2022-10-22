@@ -25,7 +25,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
    
    Set `Boot Options` > `User Mode` to `HP Factory Keys`. (If you already had this set to `Customer Keys`, you can leave this setting as is.)
    
-   Set `Boot Options` > `Boot Mode` to `UEFI Hybrid (With CSM)`. (This is only needed for the inital install as macOS Monterey has no native graphics support for Intel HD Graphics 4000. For more info, see: **"What if my screen shows garbled diagonal lines on boot?"**)
+   Set `Boot Options` > `Boot Mode` to `UEFI Native (Without CSM)`. (We don't need CSM for macOS.)
    
    Set `Device Configurations` > `Max SATA Speed` to `6.0 Gbps`. (The higher the number, the faster your hard drive can perform.)
    
@@ -97,8 +97,8 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 | Brightness controls | Express Card Slot (It is detected, but I have nothing to test it with. However, I did map the ports for future use.) |
 | CPU Power Management with XPCM & correct P & C-States | Smart Card Reader (Also detected, but I have nothing to test it with. However, it does show in macOS settings when activated in the BIOS.) |
 | Emulated NVRAM | RJ-11 (Telephone line) port. (I'm guessing it would be the same situation as the modem devices though.) |
-| Battery Percentage & Status (Charging, not charging, etc.) | DisplayPort (I don't currently have a way of testing it, but it should work.) |
-| Brightness, Volume & Sleep shortcut keys (`fn+f3`, `fn+f6`, `fn+f7`, `fn+f9`, `fn+f10`) | WWAN/GPS (I tried using a card I have that came with the laptop and the BIOS told me it wasn't supported, so I'm not sure it'll work on other cards.) |
+| Battery Percentage & Status (Charging, not charging, etc.) | WWAN/GPS (I tried using a card I have that came with the laptop and the BIOS threw an error saying it wasn't supported, so I'm not sure it'll work on other cards.) |
+| Brightness, Volume & Sleep shortcut keys (`fn+f3`, `fn+f6`, `fn+f7`, `fn+f9`, `fn+f10`) |
 | WiFi, Power, Charger & Hard Drive activity LEDs |
 | Sleep |
 | Lid Switch |
@@ -108,6 +108,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 | Audio out (Speakers & 3.5mm Headphone/Microphone Combo Jack) |
 | Audio in (Integrated Mic) |
 | USB Ports |
+| DisplayPort |
 | SD Card Reader |
 | CD-ROM |
 | WiFi, both 2.4GHz and 5GHz |
@@ -124,7 +125,6 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - WiFi and Ethernet are sometimes spotty in recovery, I recommend using the full installer which you can grab from a real Mac by using [MIST](https://github.com/ninxsoft/Mist/releases) (Requires ≤ macOS Monterey), or using Munki's InstallInstallMacOS utility, see [Making the installer in macOS](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html#downloading-macos-modern-os).  
 - USB transfers can sometimes be slow. It seems to happen on other hackintoshes too, though.
 - Neither pressing keyboard keys or using the trackpad wakes the laptop from sleep, but pressing the power button once does.
-- The macOS loading bar is wonky for the first few seconds of booting when not in `UEFI Hybrid (With CSM)` mode.
 - Boot chime volume is rather low, but I have not been able to figure out how the new UEFI Audio settings work.
 - Webcam image is pretty dark.
 - Some keyboard keys have weird behavior, such as `fn+Right arrow key` & `fn+Left arrow key` which also change brightness in addition to `fn+f9` & `fn+f10`. Seems to be related to VoodooPS2Controller.
@@ -163,7 +163,6 @@ To enable the SD Card Reader, download [JMicron-Card-Reader](https://github.com/
 | "What if I want to enable SIP?" | Due to the use of [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) and [JMicron-Card-Reader](https://github.com/chris1111/JMicron-Card-Reader), which both require SIP to be off and stay off, we cannot re-enable it without completely breaking booting. I know, because I tried. This also ties into breaking booting, as SIP is disabled in NVRAM, and so if NVRAM were to stop working, SIP would turn on and destroy everything. |
 | "What if I want to enable Secure Boot?" | You can't really enable Secure Boot with the `MacBookPro10,1` SMBIOS we are using, as Secure Boot was not a feature of that SMBIOS.|
 | "What if I want to remove the boot arg?" | We use the boot arg `-no_compat_check` so that macOS doesn't check for board compatibility with our SMBIOS. This also ties into breaking booting, because of the boot arg being NVRAM dependent. If NVRAM were to stop working or the boot arg were to be removed, we would be either unable to boot or greeted with a forbidden symbol when booting. We use the `MacBookPro10,1` SMBIOS because it was written for Ivy Bridge, which helps use less energy and produce less heat than if we were using the `MacBookPro11,1` SMBIOS, which was written for Haswell. This also has the added benefit of giving us the correct P and C-States for our processor. While you *can* use a different SMBIOS, `MacBookPro10,1` is the best one for this laptop.|
-| "What if my screen shows diagonal garbled lines on boot?" | You didn't set `Boot Options` > `Boot Mode` to `UEFI Hybrid (With CSM)`. Don't worry about the lower resolution, this is only to fix the inital boot and installation process. CSM support is needed for VESA graphics mode (No iGPU acceleration) in macOS Monterey or you will get garbled graphics when booting either into recovery or macOS, as it does not have native support for Intel HD Graphics 4000 without using patches. After patching the iGPU with [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) you can set this to `UEFI Native (Without CSM)`. |
 | "What if I want to use a custom boot logo?" | All you need to do is rename your EFI partition to "HP_TOOLS" and place the Hewlett-Packard folder into that same partition. You can change the provided Apple logo in the Hewlett-Packard folder if you want to use a different one. |
 | "What if I'm not familiar with the files in the EFI?" | Check the *EFI Files Explained* section below. |
 | "What if I don't know what hardware I have?" | Well, honestly you shouldn't even try to use this EFI, but see: [Finding your Hardware](https://dortania.github.io/OpenCore-Install-Guide/find-hardware.html). |
@@ -208,3 +207,4 @@ To enable the SD Card Reader, download [JMicron-Card-Reader](https://github.com/
 - [1Revenger1](https://github.com/1Revenger1) for [ECEnabler](https://github.com/1Revenger1/ECEnabler).
 - [Dortania](https://github.com/dortania) for [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/).
 - [5T33Z0](https://github.com/5T33Z0) for [OC Little Translated](https://5t33z0.gitbook.io/oc-litte-translated/), from which many fixes were created for this laptop.
+- [Maingamer3782](https://www.reddit.com/user/Maingamer3782/) on Reddit for the garbled screen line fixes when not using `UEFI Hybrid (With CSM)`, testing DisplayPort, and testing ethernet for me.
