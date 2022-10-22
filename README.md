@@ -146,7 +146,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 > Note: On certain Mac models, such as the MacBookPro10,x and any MacBookAir, SPMemoryReporter.spreporter
 will ignore PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
 - Trackpad isn't working in the OpenCanopy Picker, with or without PS2MouseDxe.efi. Keyboard is fine.
-- No sound plays when connecting a charger (PowerChime) by default. To fix this, open Terminal and type: `defaults write com.apple.PowerChime ChimeOnAllHardware -bool true; open /System/Library/CoreServices/PowerChime.app &`.
+- No sound plays when connecting a charger (PowerChime) by default. To fix this, open Terminal and type: `defaults write com.apple.PowerChime ChimeOnAllHardware -bool true; open /System/Library/CoreServices/PowerChime.app &`. (See the [MakeUseOf](https://www.makeuseof.com/) article: [How to Change or Disable Your MacBook's Charging Sound](https://www.makeuseof.com/tag/make-mac-play-sound-plug-charger/).
 
 ## Instructions
 1. Test, test, test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from USB first. If you need guidance on how to test boot from USB, see: **"What if I don't know how to test an EFI folder?"**
