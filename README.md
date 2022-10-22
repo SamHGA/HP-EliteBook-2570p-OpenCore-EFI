@@ -131,7 +131,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
  - You can use the power button to power on the laptop initally, but once it's turned on, pressing the button once quickly does not make it go to sleep. If you hold it down for about 1.5-2 seconds and then let go, it does go to sleep, and will wake up from a quick press. If you hold it down for 5 seconds, it will still shut down the laptop as normal.
 - The supplemental battery information, like cycle count, temperature, etc., hasn't been patched in yet.
 - The eSATA Port has been tested as a normal USB 3.0 port and it works fine, but haven't been able to test it as an actual eSATA port.
-- The WiFi Off/On physical shortcut button does work for disabling WiFi, but messes with it in a weird way which makes you have to turn WiFi off and on again manually in macOS to fix it and be able to reconnect, which kind of defeats the purpose.
+- The WiFi Off/On physical shortcut button has very strange behavior, it works for disabling, but when trying to re-enable, it sometimes works and sometimes doesn't. You need to disable and re-enable WiFi from macOS to fix it, which kind of defeats the purpose.
 - The browser physical shortut button does nothing.
 - The Mute/Unmute Audio physical shortcut button works fine, but the light stays orange no matter what state audio is in, and turns white when sleep is activated.
 - The WiFi card should be replaced with a WiFi + Bluetooth card for Airdrop, Continuity, etc. support.
