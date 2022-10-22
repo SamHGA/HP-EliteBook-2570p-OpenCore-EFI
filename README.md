@@ -139,6 +139,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - No VGA support in macOS Monterey.
 - No Airdrop, Sidecar, etc. because of no Bluetooth.
 - Trackpoint isn't working. This seems to be caused by VoodooPS2Controller. In my testing, the keyboard and trackpad work decently when using RehabMan's 2018 version of VoodooPS2, but not the trackpoint. If I switch over to the newer VoodooPS2Controller which uses VoodooInput, the trackpoint works, but nothing else.
+- No gestures.
 - Modem devices are detected, but have no support in macOS.
 - Fingerprint scanner does not work as there is currently no way to emulate Touch ID, see [Hardware Limitations](https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#miscellaneous).
 - CFG Lock can't be disabled in the BIOS.
