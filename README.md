@@ -135,10 +135,10 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - The browser physical shortut button does nothing.
 - The Mute/Unmute Audio physical shortcut button works fine, but the light stays orange no matter what state audio is in, and turns white when sleep is activated.
 - The WiFi card should be replaced with a WiFi + Bluetooth card for Airdrop, Continuity, etc. support.
-- No DRM support for iGPU in macOS Monterey + a dGPU is needed, see [Fixing DRM Support and iGPU Performance](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html). A workaround is to use a non-hardware based brwoser, such as [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/) or Chromium-based browsers such as [Google Chrome](https://www.google.com/chrome/).
+- No DRM support for iGPU in macOS Monterey + a dGPU is needed, see [Fixing DRM Support and iGPU Performance](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html). A workaround is to use a non-hardware based browser, such as [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/) or Chromium-based browsers such as [Google Chrome](https://www.google.com/chrome/).
 - No VGA support in macOS Monterey.
 - No Airdrop, Sidecar, etc. because of no Bluetooth.
-- Track Point isn't working. This seems to be caused by VoodooPS2Controller. In my testing, Keyboard and Trackpad work decently when using RehabMan's 2018 version of VoodooPS2, but not the Track Point. If I switch over to the newer VoodooPS2Controller which uses VoodooInput, the Track Point works, but nothing else.
+- Trackpoint isn't working. This seems to be caused by VoodooPS2Controller. In my testing, the keyboard and trackpad work decently when using RehabMan's 2018 version of VoodooPS2, but not the trackpoint. If I switch over to the newer VoodooPS2Controller which uses VoodooInput, the trackpoint works, but nothing else.
 - Modem devices are detected, but have no support in macOS.
 - Fingerprint scanner does not work as there is currently no way to emulate Touch ID, see [Hardware Limitations](https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#miscellaneous).
 - CFG Lock can't be disabled in the BIOS.
