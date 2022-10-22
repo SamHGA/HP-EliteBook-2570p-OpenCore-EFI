@@ -135,7 +135,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - The browser physical shortut button does nothing.
 - The Mute/Unmute Audio physical shortcut button works fine, but the light stays orange no matter what state audio is in, and turns white when sleep is activated.
 - The WiFi card should be replaced with a WiFi + Bluetooth card for Airdrop, Continuity, etc. support.
-- No DRM support for iGPU in macOS Monterey + a dGPU is needed, see [Fixing DRM Support and iGPU Performance](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html).
+- No DRM support for iGPU in macOS Monterey + a dGPU is needed, see [Fixing DRM Support and iGPU Performance](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html). A workaround is to use a non-hardware based brwoser, such as [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/) or Chromium-based browsers such as [Google Chrome](https://www.google.com/chrome/).
 - No VGA support in macOS Monterey.
 - No Airdrop, Sidecar, etc. because of no Bluetooth.
 - Track Point isn't working. This seems to be caused by VoodooPS2Controller. In my testing, Keyboard and Trackpad work decently when using RehabMan's 2018 version of VoodooPS2, but not the Track Point. If I switch over to the newer VoodooPS2Controller which uses VoodooInput, the Track Point works, but nothing else.
@@ -145,6 +145,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - "About This Mac" doesn't show the "Memory" tab. This is normal however, as we have no way to change this without changing the SMBIOS, even if we change `SystemMemoryStatus` in the config.plist. See the `PlatformInfo` section of [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf):
 > Note: On certain Mac models, such as the MacBookPro10,x and any MacBookAir, SPMemoryReporter.spreporter
 will ignore PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
+- Trackpad isn't working in the OpenCanopy Picker, with or without PS2MouseDxe.efi. Keyboard is fine.
 
 ## Instructions
 1. Test, test, test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from USB first. If you need guidance on how to test boot from USB, see: **"What if I don't know how to test an EFI folder?"**
