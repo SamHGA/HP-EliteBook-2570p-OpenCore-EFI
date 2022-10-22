@@ -145,7 +145,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - "About This Mac" doesn't show the "Memory" tab. This is normal however, as we have no way to change this without changing the SMBIOS, even if we change `SystemMemoryStatus` in the config.plist. See the `PlatformInfo` section of [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf):
 > Note: On certain Mac models, such as the MacBookPro10,x and any MacBookAir, SPMemoryReporter.spreporter
 will ignore PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
-- Trackpad isn't working in the OpenCanopy Picker, with or without PS2MouseDxe.efi. Keyboard is fine.
+- Trackpad/trackpoint aren't working in the OpenCanopy Picker, with or without PS2MouseDxe.efi. Keyboard is fine.
 - No sound plays when connecting a charger (PowerChime) by default. To fix this, open Terminal and type: `defaults write com.apple.PowerChime ChimeOnAllHardware -bool true; open /System/Library/CoreServices/PowerChime.app &`. (See the [MakeUseOf](https://www.makeuseof.com/) article: [How to Change or Disable Your MacBook's Charging Sound](https://www.makeuseof.com/tag/make-mac-play-sound-plug-charger/)).
 
 ## Instructions
