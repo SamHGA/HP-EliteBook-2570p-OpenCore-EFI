@@ -31,7 +31,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
    
    Set `Device Configurations` > `SATA Device mode` to `AHCI`. (`IDE` is obsolete and `RAID` should only be used if you are using more than one drive.)
    
-   Set `Device Configurations` > `Express Card Link Speed` to `Generation 2`. (Same reasons as `Max SATA Speed`.)
+   Set `Device Configurations` > `Express Card Link Speed` to `Generation 2`. (The higher the number, the faster your Express/Expansion card can perform.)
    
    Set `Device Configurations` > `Smart Card Reader Power Setting (if present)` to `Powered on if card is present`. (Helps reduce overall power consumption.)
    
