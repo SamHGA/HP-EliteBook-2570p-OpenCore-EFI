@@ -123,7 +123,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 
 ## Known Issues
 - WiFi is sometimes spotty in recovery, I recommend using the full installer which you can grab from a real Mac by using [MIST](https://github.com/ninxsoft/Mist/releases) (Requires ≤ macOS Monterey), using Munki's InstallInstallMacOS utility, see [Making the installer in macOS](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html#downloading-macos-modern-os), or downloading through an ethernet connection.
-- USB transfers can sometimes be slow. It seems to happen on other hackintoshes too, though.
+- USB file transfers can sometimes be slow. It seems to happen on other hackintoshes too, though.
 - Neither pressing keyboard keys or using the trackpad wakes the laptop from sleep, but pressing the power button once does.
 - Boot chime volume is rather low, but I have not been able to figure out how the new UEFI Audio settings work.
 - Webcam image is pretty dark.
