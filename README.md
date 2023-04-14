@@ -4,7 +4,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 
 ***I will not be held responsible for any bricks just because you were too lazy to read.***
 
-<ins>Even then, use this EFI at your own risk only if you know what you're doing and can edit the config.plist according to your own hardware and needs.</ins>
+<ins>Even then, use this EFI at your own risk and only if you know what you're doing and can edit the config.plist according to your own hardware and needs.</ins>
 
 ## Considerations
    ### macOS
