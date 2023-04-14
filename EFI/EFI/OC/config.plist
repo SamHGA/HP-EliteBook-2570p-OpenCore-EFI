@@ -1068,13 +1068,13 @@
 			<key>AdviseFeatures</key>
 			<false/>
 			<key>MLB</key>
-			<string>C02303501QXDY3VFB</string>
+			<string></string>
 			<key>MaxBIOSVersion</key>
 			<false/>
 			<key>ProcessorType</key>
 			<integer>0</integer>
 			<key>ROM</key>
-			<data>LFnlumMw</data>
+			<data></data>
 			<key>SpoofVendor</key>
 			<true/>
 			<key>SystemMemoryStatus</key>
@@ -1082,9 +1082,9 @@
 			<key>SystemProductName</key>
 			<string>MacBookPro10,1</string>
 			<key>SystemSerialNumber</key>
-			<string>C02K49YADKQ1</string>
+			<string></string>
 			<key>SystemUUID</key>
-			<string>9F9C1A21-C13B-416F-B761-A97E55450771</string>
+			<string></string>
 		</dict>
 		<key>UpdateDataHub</key>
 		<true/>
