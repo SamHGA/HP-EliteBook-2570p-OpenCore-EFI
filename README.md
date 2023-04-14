@@ -9,7 +9,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 ## Considerations
    ### macOS
    - You can install any macOS Monterey version, either with a full installer or through recovery. <ins>This EFI folder has not been tested with any other macOS, and therefore does not have support for anything other than macOS Monterey.</ins> If you want to install a different version, see: **"What if I need > macOS Monterey?"**
-   ### Hardware
+   ### Requirements
    - While officially you only need 4GB of RAM, I personally recommend no less than 8GB running in [dual channel](https://www.crucial.com/articles/about-memory/what-is-dual-channel-memory) and using a SATA SSD at the very least to get reasonable performance. However, this is optional and completely up to you.
    - You ***NEED*** to have the exact same model or, at the very least, have a [same generation](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) CPU and iGPU to use this config.plist as is.
    ### config.plist
