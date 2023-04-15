@@ -1,4 +1,4 @@
-Bootable OpenCore EFI Folder and the relevant files used to make it. Made for the HP EliteBook 2570p, with macOS Monterey in mind. Initially based on OpenCore 0.8.5, updated to OpenCore 0.8.7.
+Bootable OpenCore EFI Folder and the relevant files used to make it. Made for the HP EliteBook 2570p, with macOS Monterey in mind. Initially based on OpenCore 0.8.5, updated to OpenCore 0.8.8.
 
 **<ins>PLEASE READ ALL THE INSTRUCTIONS BEFORE USING THIS EFI.</ins>**
 
