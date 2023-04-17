@@ -2,7 +2,7 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
 
 **<ins>PLEASE READ ALL THE INSTRUCTIONS BEFORE USING THIS EFI.</ins>**
 
-***I will not be held responsible for any bricks just because you were too lazy to read.***
+***<ins>I WILL NOT BE RESPONSIBLE FOR ANY BRICKS JUST BECAUSE YOU WERE TOO LAZY TO READ.</ins>***
 
 **<ins>Even then, use this EFI at your own risk and only if you know what you're doing and can edit the config.plist according to your own hardware and needs.</ins>**
 
