@@ -127,6 +127,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 - Neither pressing keyboard keys or using the trackpad wakes the laptop from sleep, but pressing the power button once does.
 - Boot chime volume is rather low, but I have not been able to figure out how the new UEFI Audio settings work.
 - Webcam image is pretty dark.
+- Brightness levels reset on restart or shut down.
 - Some keyboard keys have weird behavior, such as `fn+Right arrow key` & `fn+Left arrow key` which also change brightness in addition to `fn+f9` & `fn+f10`. Seems to be related to VoodooPS2Controller.
  - You can use the power button to power on the laptop initally, but once it's turned on, pressing the button once quickly does not make it go to sleep. If you hold it down for about 1.5-2 seconds and then let go, it does go to sleep, and will wake up from a quick press. If you hold it down for 5 seconds, it will still shut down the laptop as normal.
 - The supplemental battery information, like cycle count, temperature, etc., hasn't been patched in yet.
