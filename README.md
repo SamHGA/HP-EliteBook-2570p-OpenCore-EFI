@@ -1,17 +1,17 @@
-Bootable OpenCore EFI Folder and the relevant files used to make it. Made for the HP EliteBook 2570p, with macOS Monterey in mind. Initially based on OpenCore 0.8.5, updated to OpenCore 0.8.8.
+Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running macOS Monterey. Currently updated to: OpenCore 0.8.8.
 
 **<ins>PLEASE READ ALL THE INSTRUCTIONS BEFORE USING THIS EFI.</ins>**
 
 ***I will not be held responsible for any bricks just because you were too lazy to read.***
 
-<ins>Even then, use this EFI at your own risk and only if you know what you're doing and can edit the config.plist according to your own hardware and needs.</ins>
+**<ins>Even then, use this EFI at your own risk and only if you know what you're doing and can edit the config.plist according to your own hardware and needs.</ins>**
 
 ## Considerations
    ### macOS
-   - You can install any macOS Monterey version, either with a full installer or through recovery. <ins>This EFI folder has not been tested with any other macOS, and therefore does not have support for anything other than macOS Monterey.</ins> If you want to install a different version, see: **"What if I need > macOS Monterey?"**
+   - You can install any macOS Monterey version, either with a full installer or through recovery. <ins>This EFI folder has not been tested with any other macOS, and only supports macOS Monterey.</ins> If you want to install a different version, see: **"What if I need > macOS Monterey?"**
    ### Requirements
-   - While officially you only need 4GB of RAM, I personally recommend no less than 8GB running in [dual channel](https://www.crucial.com/articles/about-memory/what-is-dual-channel-memory) and using a SATA SSD at the very least to get reasonable performance. However, this is optional and completely up to you.
-   - You ***NEED*** to have the exact same model or, at the very least, have a [same generation](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) CPU and iGPU to use this config.plist as is.
+   - While you technically only need 4GB of RAM, I recommend no less than 8GB running in [dual channel](https://www.crucial.com/articles/about-memory/what-is-dual-channel-memory) and using an SSD at the very least to get reasonable performance.
+   - You need to have the exact same model or, at the very least, have a [same generation](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) CPU and iGPU to use this config.plist as is.
    ### config.plist
    - You need to have emulated NVRAM enabled by setting `LoadEarly` to `True` for both OpenRuntime.efi and OpenVariableRuntimeDxe.efi. ***You cannot boot if this is configured incorrectly after the initial install. Be careful when snapshotting with [ProperTree](https://github.com/corpnewt/ProperTree) as it resets the*** `LoadEarly` ***value to*** `False`***. This has the potential to break booting completely and will warrant a full reinstall.*** If you have questions, see: **"What if I don't know how to enable emulated NVRAM?"**
    - Before using this EFI make sure to generate your own SMBIOS information with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) using `MacBookPro10,1` and place it in `PlatformInfo` before being able to use this EFI. If you don't know how to do this, see: **"What if I don't know how to use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)?"**
