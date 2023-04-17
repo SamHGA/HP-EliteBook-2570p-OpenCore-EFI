@@ -97,6 +97,7 @@ Bootable OpenCore EFI Folder and the relevant files used to make it. Made for th
 | CPU Power Management with XPCM & correct P & C-States | Smart Card Reader (Also detected, but I have nothing to test it with. However, it does show in macOS settings when activated in the BIOS.) |
 | Emulated NVRAM | RJ-11 (Telephone line) port. (I'm guessing it would be the same situation as the modem devices though.) |
 | Battery Percentage & Status (Charging, not charging, etc.) | WWAN/GPS (I tried using a card I have that came with the laptop and the BIOS threw an error saying it wasn't supported, so I'm not sure it'll work on other cards.) |
+| Charger connected/Charging sound |
 | Brightness, Volume & Sleep shortcut keys (`fn+f3`, `fn+f6`, `fn+f7`, `fn+f9`, `fn+f10`) |
 | WiFi, Power, Charger & Hard Drive activity LEDs |
 | Sleep |
