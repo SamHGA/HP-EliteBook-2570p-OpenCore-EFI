@@ -29,9 +29,9 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
    
    Set `Device Configurations` > `Smart Card Reader Power Setting (if present)` to `Powered on if card is present`. (Helps reduce overall power consumption.)
    
-   Set `Device Configurations` > `Deep sleep` to `Auto`. (In my research, setting this to either `On` or `Off` breaks Sleep in macOS.)
+   Set `Device Configurations` > `Deep sleep` to `Auto`. (In my research, setting this to either `On` or `Off` breaks Sleep.)
    
-   Set `Built-In Device Options` > `Wake on LAN` to `Disable`. (In my research, setting this to `Boot to Network` or `Follow Boot Order` also breaks sleep in macOS.)
+   Set `Built-In Device Options` > `Wake on LAN` to `Disable`. (In my research, setting this to `Boot to Network` or `Follow Boot Order` also breaks Sleep.)
    
    ### Enable & Disable
    | Enable | Disable |
@@ -117,42 +117,43 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
 | Recovery |
 
 ## Known Issues
-- WiFi is sometimes spotty in recovery, I recommend using the full installer which you can grab from a real Mac by using [MIST](https://github.com/ninxsoft/Mist/releases) (Requires ≤ macOS Monterey), using Munki's InstallInstallMacOS utility, see [Making the installer in macOS](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html#downloading-macos-modern-os), or downloading through an ethernet connection.
-- USB file transfers can sometimes be slow. It seems to happen on other hackintoshes too, though.
+- WiFi is weird in recovery, I recommend using the full installer which you can grab from a real Mac by using [MIST](https://github.com/ninxsoft/Mist/releases) (Requires ≤ macOS Monterey), using Munki's InstallInstallMacOS utility, see [Making the installer in macOS](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html#downloading-macos-modern-os), or downloading through an ethernet connection. If you don't have a Mac you can use, you can always install macOS on a VM and download the full installer from there.
+- Sometimes USB file transfers are slow.
 - Neither pressing keyboard keys or using the trackpad wakes the laptop from sleep, but pressing the power button once does.
-- Boot chime volume is rather low, but I have not been able to figure out how the new UEFI Audio settings work.
+- Boot chime volume is low, but I have not been able to figure out how the new UEFI Audio settings work yet.
 - Webcam image is pretty dark.
-- Brightness levels reset on restart or shut down.
+- Screen brightness levels reset on restart or shut down.
 - Some keyboard keys have weird behavior, such as `fn+Right arrow key` & `fn+Left arrow key` which also change brightness in addition to `fn+f9` & `fn+f10`. Seems to be related to VoodooPS2Controller.
- - You can use the power button to power on the laptop initally, but once it's turned on, pressing the button once quickly does not make it go to sleep. If you hold it down for about 1.5-2 seconds and then let go, it does go to sleep, and will wake up from a quick press. If you hold it down for 5 seconds, it will still shut down the laptop as normal.
+ - You can use the power button to power on the laptop, but once it's turned on, pressing the button once quickly does not make it go to sleep. If you hold it down for about 1.5-2 seconds, it does go to sleep, and will wake up from a quick press. If you hold it down for 5 seconds, it will still shut down as normal.
 - The supplemental battery information, like cycle count, temperature, etc., hasn't been patched in yet.
 - The eSATA Port has been tested as a normal USB 3.0 port and it works fine, but haven't been able to test it as an actual eSATA port.
 - The hardware Wi-Fi shortcut button has very strange behavior, it works for disabling, but when trying to re-enable, it sometimes works and sometimes doesn't. You need to disable and re-enable WiFi from macOS to fix it, which kind of defeats the purpose. However, it does change colors depending on the current on or off status.
 - The hardware browser shortut button does nothing.
-- The hardware audio shortcut button works fine, but the light stays orange no matter what state audio is in, and turns white when sleep is activated.
+- The hardware audio shortcut button works fine, but the light stays orange no matter what state audio is in, and turns white when Sleep is activated.
 - The WiFi card should be replaced with a WiFi + Bluetooth card for Airdrop, Continuity, etc. support.
 - No DRM support for iGPU in macOS Monterey + a dGPU is needed, see [Fixing DRM Support and iGPU Performance](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html). A workaround is to use a non-hardware DRM based browser, such as [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/) or Chromium-based browsers such as [Google Chrome](https://www.google.com/chrome/).
-- No VGA support in macOS Monterey.
-- No Airdrop, Sidecar, etc. because of no Bluetooth.
+- No VGA support in macOS.
 - Trackpoint isn't working. This seems to be caused by VoodooPS2Controller. In my testing, the keyboard and trackpad work decently when using RehabMan's 2018 version of VoodooPS2, but not the trackpoint. If I switch over to the newer VoodooPS2Controller which uses VoodooInput, the trackpoint works, but nothing else.
-- No gestures.
+- No trackpad gestures.
 - Modem devices are detected, but have no support in macOS.
 - Fingerprint scanner does not work as there is currently no way to emulate Touch ID, see [Hardware Limitations](https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#miscellaneous).
-- CFG Lock can't be disabled in the BIOS.
+- CFG Lock can't currently be disabled in the BIOS.
 - "About This Mac" doesn't show the "Memory" tab. This is normal however, as we have no way to change this without changing the SMBIOS, even if we change `SystemMemoryStatus` in the config.plist. See the `PlatformInfo` section of [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf):
 > Note: On certain Mac models, such as the MacBookPro10,x and any MacBookAir, SPMemoryReporter.spreporter
 will ignore PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
 - Trackpad/trackpoint aren't working in the OpenCanopy Picker, with or without PS2MouseDxe.efi. Keyboard is fine.
-- No sound plays when connecting a charger (PowerChime) by default. To fix this, open Terminal and type: `defaults write com.apple.PowerChime ChimeOnAllHardware -bool true; open /System/Library/CoreServices/PowerChime.app &`. (See the [MakeUseOf](https://www.makeuseof.com/) article: [How to Change or Disable Your MacBook's Charging Sound](https://www.makeuseof.com/tag/make-mac-play-sound-plug-charger/)).
-- AirPlay to Mac does not work when using a 5GHz WiFi band.
+- Sometimes AirPlay to Mac doesn't work when using a 5GHz WiFi band.
 
 ## Instructions
-1. Test, test, test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from USB first. If you need guidance on how to test boot from USB, see: **"What if I don't know how to test an EFI folder?"**
+1. Test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from a USB drive first. If you need guidance on how to test boot from a USB drive, see: **"What if I don't know how to test an EFI folder?"**
 2. Once tested and confirmed working, you will need to download [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) to patch the Intel HD Graphics 4000 iGPU to get graphics acceleration working. If you need guidance on how to do this, see: **"What if I don't know how to use OpenCore Legacy Patcher?"**
 3. Once fully patched, you can swap back from DEBUG to RELEASE.
 
 ## SD Card Reader
 To enable the SD Card Reader, download [JMicron-Card-Reader](https://github.com/chris1111/JMicron-Card-Reader) from [chris1111](https://github.com/chris1111) and install it. Security & Privacy will ask you to allow the new extensions, so allow them and reboot. (**Note:** You might have to reboot a second time.) Once rebooted the SD Card Reader should be fully working.
+
+## PowerChime
+No sound plays when connecting a charger (PowerChime) by default. To fix this, open Terminal and type: `defaults write com.apple.PowerChime ChimeOnAllHardware -bool true; open /System/Library/CoreServices/PowerChime.app &`. (See the [MakeUseOf](https://www.makeuseof.com/) article: [How to Change or Disable Your MacBook's Charging Sound](https://www.makeuseof.com/tag/make-mac-play-sound-plug-charger/)).
 
 ## "What if...?"
 | "What if...?" | Answer |
