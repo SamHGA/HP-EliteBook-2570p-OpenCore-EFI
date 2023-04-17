@@ -15,7 +15,7 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
    - You cannot enable SIP, Secure Boot or remove the `-no_compat_check` boot arg or you will break booting. For more information, see: **"What if I want to enable SIP?"**, **"What if I want to enable Secure Boot?"**, and **"What if I want to remove the boot arg?"**
    - `AppleXcpmCfgLock` has to stay enabled in the config.plist as CFG Lock can't currently be disabled through normal means. We don't use `AppleCpuPmCfgLock` as we have enabled XCPM.
 
-## BIOS
+## BIOS Changes
    ### Settings
    Set `Boot Options` > `Startup Menu Delay (Sec.)` to `05`. (This will give you a chance to enter the BIOS just in case you need to change anything, as I have found that it sometimes boots very quickly when using a SATA SSD.)
    
