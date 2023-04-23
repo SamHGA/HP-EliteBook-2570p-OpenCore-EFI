@@ -8,10 +8,10 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
    ### macOS
    - You can install any macOS Monterey version, either with a full installer or through recovery. <ins>This EFI folder has not been tested with any other macOS, and only supports macOS Monterey.</ins> If you want to install a different version, see: **"What if I need > macOS Monterey?"**
    ### config.plist
-   - You need to have emulated NVRAM enabled by setting `LoadEarly` to `True` for both OpenRuntime.efi and OpenVariableRuntimeDxe.efi. Be careful when snapshotting with [ProperTree](https://github.com/corpnewt/ProperTree) as it resets the `LoadEarly` value to `False`. This will break booting completely and will warrant a full reinstall if set incorrectly. If you have questions, see: **"What if I don't know how to enable emulated NVRAM?"**
    - Before using this EFI make sure to generate your own SMBIOS information with [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) using `MacBookPro10,1` and place it in `PlatformInfo` before using this EFI. If you don't know how to do this, see: **"What if I don't know how to use [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)?"**
-   - You cannot enable SIP, Secure Boot or remove the `-no_compat_check` boot arg or you will break booting. For more information, see: **"What if I want to enable SIP?"**, **"What if I want to enable Secure Boot?"**, and **"What if I want to remove the boot arg?"**
+   - You cannot enable SIP, Secure Boot or remove the `-no_compat_check` boot arg or you will break the boot process. For more information, see: **"What if I want to enable SIP?"**, **"What if I want to enable Secure Boot?"**, and **"What if I want to remove the boot arg?"**
    - `AppleXcpmCfgLock` has to stay enabled in the config.plist as CFG Lock can't currently be disabled through normal means. We don't use `AppleCpuPmCfgLock` as we have enabled XCPM.
+   - You need to have emulated NVRAM setup, see **"What if I don't know how to enable emulated NVRAM?"**
 
 ## BIOS Changes
    ### Settings
@@ -87,7 +87,7 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
 ## What's Working
 | Fully Working | Not Tested |
 | ------------- | ---------- |
-| iGPU Acceleration (Patched) | SIM Card Slot |
+| iGPU Graphics Acceleration (Patched) | SIM Card Slot |
 | Brightness controls | Express Card Slot (It is detected, but I have nothing to test it with. However, I did map the ports for future use.) |
 | CPU Power Management with XPCM & correct P & C-States | Smart Card Reader (Also detected, but I have nothing to test it with. However, it does show in macOS settings when activated in the BIOS.) |
 | Emulated NVRAM | RJ-11 (Telephone line) port. (I'm guessing it would be the same situation as the modem devices though.) |
