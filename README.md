@@ -67,7 +67,7 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
    | `Port Options` > `eSATA Port`|
 
 ## **Hardware**
-   - If you have **ANY** different hardware than what's listed in the hardware table below, make sure to change Kexts, SSDTs, Drivers, add or remove patches and update your config.plist accordingly, see: **"What if I'm not familiar with the ACPI/SSDT/Patch files in the EFI?"**
+   - If you have **ANY** different hardware than what's listed in the hardware table below, make sure to change Kexts, SSDTs, Drivers, add or remove patches and update your config.plist accordingly, see: **"What if I'm not familiar with the files in the EFI folder?"**
    - If you don't know what hardware you have, you probably shouldn't even be here, but see: **"What if I don't know what hardware I have?"**
 
 | Hardware | Model |
@@ -165,13 +165,12 @@ No sound plays when connecting a charger (PowerChime) by default. To fix this, o
 | "What if I want to enable Secure Boot?" | You can't enable Secure Boot with the `MacBookPro10,1` SMBIOS we are using, as Secure Boot was not a feature of that SMBIOS.|
 | "What if I want to remove the boot arg?" | We use the boot arg `-no_compat_check` so that macOS doesn't check for board compatibility with our SMBIOS. This also ties into breaking booting, because of the boot arg being NVRAM dependent. If NVRAM were to stop working or the boot arg were to be removed, we would be either unable to boot or greeted with a forbidden symbol when booting. We use the `MacBookPro10,1` SMBIOS because it was written for Ivy Bridge, which helps use less energy and produce less heat than if we were using the `MacBookPro11,1` SMBIOS, which was written for Haswell. This also has the added benefit of giving us the correct P and C-States for our processor. While you *can* use a different SMBIOS, `MacBookPro10,1` is the best one for this laptop.|
 | "What if I want to use a custom boot logo?" | All you need to do is rename your EFI partition to "HP_TOOLS" and place the Hewlett-Packard folder into that same partition. You can change the provided Apple logo in the Hewlett-Packard folder if you want to use a different one. |
-| "What if I'm not familiar with the ACPI/SSDT/Patch files in the EFI?" | Check the *EFI Files Explained* section below. |
+| "What if I'm not familiar with the files in the EFI folder?" | Check the *EFI Files Explained* section below. |
 | "What if I don't know what hardware I have?" | Well, honestly you shouldn't even try to use this EFI, but see: [Finding your Hardware](https://dortania.github.io/OpenCore-Install-Guide/find-hardware.html). |
-| "What if I don't know how to test an EFI folder?" | The first thing you should do is download OpenCore 0.8.5 DEBUG and replace the files in the EFI with the ones in the OpenCore download. The main ones to replace are listed in the *Debugging File Swaps* table below. You can then enable debugging settings, see: [OpenCore Debugging](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/debug.html#config-changes) and [System Debugging](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/kernel-debugging.html#config-plist-setup). Now all you have to do is put that new debugging-enabled EFI on a USB and boot! You can check what could be causing problems or panics when trying to boot, and the logs should save to your USB drive. |
+| "What if I don't know how to test an EFI folder?" | The first thing you should do is download OpenCore DEBUG and replace the files in the EFI with the ones in the OpenCore download. The main ones to replace are listed in the *Debugging File Swaps* table below. You can then enable debugging settings, see: [OpenCore Debugging](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/debug.html#config-changes) and [System Debugging](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/kernel-debugging.html#config-plist-setup). Now all you have to do is put that new debugging-enabled EFI on a USB and boot! You can check what could be causing problems or panics when trying to boot, and the logs should save to your USB drive. |
 | "What if I don't know how to use [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases)?" | After installing macOS Monterey, you'll notice that you have no iGPU acceleration and everything chugs along *very* slowly. To fix this, we download [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases), run it, re-launch as root, click on `Post Install Root Patch`, click on `Apply Patches`, and wait for the prompt to reboot. After rebooting, iGPU acceleration should now be fully working. If you update through Software Update this patch will be removed and you will have repeat this process. Note that [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) automatically detects when the patches have been removed and will prompt you to patch again. |
 
 ## EFI Files Explained
-### ACPI/SSDTs
 | Name | Function |
 | ---- | -------- |
 | SSDT-AC | This patch attaches an AC Adapter Device that already exists in the DSDT to the `AppleACPIACAdapter` service in the IORegistry of macOS. This is optional and mostly cosmetic – it doesn't make any difference in terms of functionality, see: [Emulate a layer of AppleACPIACAdapter](https://github.com/acidanthera/bugtracker/issues/1808). |
@@ -182,14 +181,6 @@ No sound plays when connecting a charger (PowerChime) by default. To fix this, o
 | SSDT-LANC & SSDT-UPRW | macOS will instantly wake if ethernet or power states change while sleeping. To fix this, we need to reroute the `LANC` & `UPRW` calls to a new SSDT, which is what this patch does. |
 | SSDT-PNLF| This patch creates a `PNLF` device for macOS to use for brightness controls, specifically a `PNLF` device with a hardware ID of `APP0002`. |
 | SSDT-XCPM | Apple deactivated the `X86PlatformPlugin` support for Ivy Bridge in macOS a few years back. Instead, the `ACPI_SMC_PlatformPlugin` is used for CPU power management, although XCPM is supported by Ivy Bridge CPUs natively. This patch brings back XCPM power management. |
-
-### Patches
-| Name | Function |
-| ---- | -------- |
-| BoardIDSkip + VMM | Enables booting macOS Monterey with an unsupported Board ID and adds patches that [OpenCore Legacy Patcher](https://github.com/dortania/Opencore-Legacy-Patcher/releases) uses to trick macOS into thinking it's running on a virtual machine. |
-| Enable XCPM | Patches for enabling XCPM power management, used with SSDT-XCPM. |
-| IRQ-HPET | Patches for `HPET` to fix sound issues, used with SSDT-HPET. |
-| UPRW & LANC Rename | Patches for fixing power state & ethernet changes instantly waking macOS. |
 
 ## Debugging File Swaps
 | EFI > BOOT | EFI > OC | EFI > OC > Drivers |
