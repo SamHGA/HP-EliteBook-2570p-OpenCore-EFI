@@ -190,6 +190,7 @@ No sound plays when connecting a charger (PowerChime) by default. To fix this, o
 |             |              | OpenCanopy.efi             |
 
 ## Thank You!
+- [Apple](https://github.com/apple) for macOS.
 - [acidanthera](https://github.com/acidanthera) for [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg), [AppleALC](https://github.com/acidanthera/AppleALC), [MaciASL](https://github.com/acidanthera/MaciASL), [VoodooPS2](https://github.com/acidanthera/VoodooPS2), [FeatureUnlock](https://github.com/acidanthera/FeatureUnlock), [WhateverGreen](https://github.com/acidanthera/WhateverGreen), [Lilu](https://github.com/acidanthera/Lilu), [VirtualSMC](https://github.com/acidanthera/VirtualSMC), [IntelMausi](https://github.com/acidanthera/IntelMausi), [gfxutil](https://github.com/acidanthera/gfxutil), [macserial](https://github.com/acidanthera/macserial), and [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)
 - [RehabMan](https://github.com/RehabMan) for the various patches he made, and [RehabMan's VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/).
 - [chris1111](https://github.com/chris1111) for [JMicron-Card-Reader](https://github.com/chris1111/JMicron-Card-Reader).
