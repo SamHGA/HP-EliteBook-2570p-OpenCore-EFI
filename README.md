@@ -142,7 +142,7 @@ Bootable OpenCore EFI Folder, made for the HP EliteBook 2570p laptop, running ma
 > Note: On certain Mac models, such as the MacBookPro10,x and any MacBookAir, SPMemoryReporter.spreporter
 will ignore PT_FEATURE_HAS_SOLDERED_SYSTEM_MEMORY and assume that system memory is non-upgradable.
 - Trackpad/trackpoint aren't working in the OpenCanopy Picker, with or without PS2MouseDxe.efi. Keyboard is fine.
-- Sometimes AirPlay to Mac doesn't work when using a 5GHz WiFi band.
+- Sometimes AirPlay to Mac doesn't work when using a 5GHz Wi-Fi band.
 
 ## Instructions
 1. Test. I ***DO NOT*** recommend placing this EFI directly on your main hard drive EFI partiton without swapping from RELEASE to DEBUG and test booting from a USB drive first. If you need guidance on how to test boot from a USB drive, see: **"What if I don't know how to test an EFI folder?"**
